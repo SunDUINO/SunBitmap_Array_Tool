@@ -72,6 +72,7 @@ go build -ldflags -H=windowsgui -o SunBitmap_Array_Tool.exe main.go
 ##🌐 Tłumaczenia
 
 PL – polski
+
 EN – angielski
 
 Obsługiwane dynamiczne przełączanie języka w GUI
