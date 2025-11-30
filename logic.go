@@ -1,3 +1,15 @@
+/*
+================================================================================
+File:        logic.go
+Description: Logika przetwarzania obrazów, np. progowanie, dithering,
+             oversampling, detekcja konturów oraz generowanie tablic C/Rust.
+Author:      SunRiver / Lothar Team
+Website:     https://forum.lothar-team.pl/
+Version:     0.0.01
+Date:        2025-11-30
+================================================================================
+*/
+
 package main
 
 import (

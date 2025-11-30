@@ -1,3 +1,15 @@
+/*
+================================================================================
+File:        settings.go
+Description: Zarządzanie ustawieniami aplikacji (język, motyw),
+             wczytywanie i zapisywanie do settings.json.
+Author:      SunRiver / Lothar Team
+Website:     https://forum.lothar-team.pl/
+Version:     0.0.01
+Date:        2025-11-30
+================================================================================
+*/
+
 package main
 
 import (

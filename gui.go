@@ -1,3 +1,15 @@
+/*
+================================================================================
+File:        gui.go
+Description: Definiuje wszystkie elementy GUI aplikacji przy użyciu Fyne,
+             obsługę przycisków, sliderów i podziałów okien.
+Author:      SunRiver / Lothar Team
+Website:     https://forum.lothar-team.pl/
+Version:     0.0.01
+Date:        2025-11-30
+================================================================================
+*/
+
 package main
 
 import (

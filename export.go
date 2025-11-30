@@ -1,3 +1,15 @@
+/*
+================================================================================
+File:        export.go
+Description: Zawiera funkcje odpowiedzialne za eksportowanie przetworzonych
+             bitmap do tablicy C lub Rust.
+Author:      SunRiver / Lothar Team
+Website:     https://forum.lothar-team.pl/
+Version:     0.0.01
+Date:        2025-11-30
+================================================================================
+*/
+
 package main
 
 import (

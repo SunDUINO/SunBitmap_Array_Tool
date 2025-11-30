@@ -1,3 +1,15 @@
+/*
+================================================================================
+File:        i18n.go
+Description: Zawiera definicje słowników językowych, funkcje do dynamicznej
+             zmiany języka i pobierania tłumaczeń.
+Author:      SunRiver / Lothar Team
+Website:     https://forum.lothar-team.pl/
+Version:     0.0.01
+Date:        2025-11-30
+================================================================================
+*/
+
 package main
 
 type Lang string
