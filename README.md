@@ -61,7 +61,7 @@ go run main.go
 go build -ldflags -H=windowsgui -o SunBitmap_Array_Tool.exe main.go
 ```
 
-##🖼️ Użycie
+## 🖼️ Użycie
 
 - Kliknij Open Image i wybierz plik PNG.
 - Ustaw threshold sliderem, aby przetestować przetwarzanie.
@@ -69,7 +69,7 @@ go build -ldflags -H=windowsgui -o SunBitmap_Array_Tool.exe main.go
 - Plik zostanie zapisany w folderze bitmap/ obok programu.
 - Możesz zmieniać język i motyw dynamicznie klikając przyciski w górnym wierszu.
 
-##🌐 Tłumaczenia
+## 🌐 Tłumaczenia
 
 PL – polski
 
@@ -77,14 +77,27 @@ EN – angielski
 
 Obsługiwane dynamiczne przełączanie języka w GUI
 
-##📄 Licencja
+## 📄 Licencja
 
 Projekt udostępniony na licencji MIT.
 
 
 ---
 
-##🔧 TODO / plan rozwoju
+## Objaśnienia 
+
+Suwak „Threshold” steruje poziomem binarizacji obrazu.
+
+🔍 Co to oznacza?
+
+Binarizacja to proces przekształcania obrazu na czarno–biały (0 lub 1) na podstawie poziomu jasności pikseli.
+Suwak ustawia wartość progu od 0 do 255 czyli:
+
+Każdy piksel jaśniejszy niż próg → staje się biały (1) <br>
+Każdy piksel ciemniejszy niż próg → staje się czarny (0)
+
+
+## 🔧 TODO / plan rozwoju
 
  --- Dodanie różnych metod ditheringu (Floyd–Steinberg, Atkinson)
 
