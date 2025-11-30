@@ -27,7 +27,7 @@ const (
 
 var CurrentLang = EN
 
-// --------- SŁOWNIK TRANSLACJI ---------
+// --------- SŁOWNIK TRANSLACJI ---------------
 
 // dict to mapa map, która przechowuje tłumaczenia tekstów w różnych językach
 // Klucz zewnętrzny: język (Lang), klucz wewnętrzny: identyfikator tekstu
