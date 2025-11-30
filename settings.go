@@ -47,7 +47,7 @@ const SettingsFile = "settings.json" // nazwa pliku ustawień
 func InitSettingsPath() {
 	exePath, err := os.Executable() // pobranie ścieżki do uruchomionej aplikacji
 	if err != nil {
-		println("Cannot get executable path:", err.Error())
+		println("Cannot get executable path: ", err.Error())
 		SettingsPath = "settings.json" // fallback – zapis w bieżącym katalogu
 		return
 	}
