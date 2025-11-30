@@ -16,7 +16,7 @@ import "fyne.io/fyne/v2/app"
 
 // --------- STAŁE APLIKACJI ---------
 var appname = "SunBitmap_Array_Tool v." // nazwa aplikacji wyświetlana w GUI
-var version = "0.0.3"                   // wersja aplikacji
+var version = "0.0.4"                   // wersja aplikacji
 
 // --------- FUNKCJA GŁÓWNA ---------
 func main() {
