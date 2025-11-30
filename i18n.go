@@ -12,15 +12,25 @@ Date:        2025-11-30
 
 package main
 
+// --------- TYPY I STAŁE ---------
+
+// Lang to typ reprezentujący język w aplikacji
 type Lang string
 
+// Dostępne języki: polski i angielski
 const (
 	PL Lang = "pl"
 	EN Lang = "en"
 )
 
+// Aktualnie wybrany język (domyślnie angielski)
+
 var CurrentLang = EN
 
+// --------- SŁOWNIK TRANSLACJI ---------
+
+// dict to mapa map, która przechowuje tłumaczenia tekstów w różnych językach
+// Klucz zewnętrzny: język (Lang), klucz wewnętrzny: identyfikator tekstu
 var dict = map[Lang]map[string]string{
 	EN: {
 		"open_image":  "Open Image",
@@ -36,13 +46,17 @@ var dict = map[Lang]map[string]string{
 	},
 }
 
+// --------- FUNKCJE POMOCNICZE ---------
+
+// T – tłumaczy dany klucz na aktualnie wybrany język
 func T(key string) string {
-	if v, ok := dict[CurrentLang][key]; ok {
-		return v
+	if v, ok := dict[CurrentLang][key]; ok { // sprawdzenie, czy klucz istnieje w słowniku
+		return v // zwróć tłumaczenie
 	}
-	return key
+	return key // jeśli brak tłumaczenia, zwróć sam klucz
 }
 
+// NextLanguage – zwraca kolejny język (przełączenie między EN i PL)
 func NextLanguage() Lang {
 	if CurrentLang == EN {
 		return PL
@@ -50,12 +64,11 @@ func NextLanguage() Lang {
 	return EN
 }
 
-// To co będzie na przycisku:
+// LanguageButtonLabel – tekst, który pojawi się na przycisku zmiany języka
 func LanguageButtonLabel() string {
 	if CurrentLang == EN {
-		return "🇵🇱 PL"
+		return "🇵🇱 PL" // jeśli aktualnie EN, przycisk pokazuje opcję PL
 	}
-	SaveSettings()
-	return "🇬🇧 EN"
-
+	SaveSettings() // jeśli aktualnie PL, zapis ustawień (np. języka)
+	return "🇬🇧 EN" // przycisk pokazuje opcję EN
 }

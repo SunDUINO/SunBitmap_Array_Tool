@@ -13,41 +13,51 @@ Date:        2025-11-30
 package main
 
 import (
-	"encoding/json"
-	"os"
-	"path/filepath"
+	"encoding/json" // do kodowania/odkodowywania JSON
 
-	"fyne.io/fyne/v2"
+	"os"            // do operacji na plikach
+	"path/filepath" // do obsługi ścieżek plików
+
+	"fyne.io/fyne/v2" // framework GUI
 	"fyne.io/fyne/v2/theme"
 )
 
-var SettingsPath string
+// --------- GLOBALNE ZMIENNE ---------
+
+var SettingsPath string // pełna ścieżka do pliku ustawień
+
+// Struktura przechowująca ustawienia aplikacji
 
 type Settings struct {
-	Language string `json:"language"`
-	DarkMode bool   `json:"dark_mode"`
+	Language string `json:"language"`  // język aplikacji: "en" lub "pl"
+	DarkMode bool   `json:"dark_mode"` // tryb ciemny: true/false
 }
+
+// Domyślne ustawienia aplikacji
 
 var AppSettings = Settings{
 	Language: "en",
 	DarkMode: false,
 }
 
-const SettingsFile = "settings.json"
+const SettingsFile = "settings.json" // nazwa pliku ustawień
+
+// --------- INICJALIZACJA ŚCIEŻKI ---------
 
 func InitSettingsPath() {
-	exePath, err := os.Executable()
+	exePath, err := os.Executable() // pobranie ścieżki do uruchomionej aplikacji
 	if err != nil {
 		println("Cannot get executable path:", err.Error())
-		SettingsPath = "settings.json" // fallback
+		SettingsPath = "settings.json" // fallback – zapis w bieżącym katalogu
 		return
 	}
 
-	exeDir := filepath.Dir(exePath)
-	SettingsPath = filepath.Join(exeDir, "settings.json")
+	exeDir := filepath.Dir(exePath)                    // katalog aplikacji
+	SettingsPath = filepath.Join(exeDir, SettingsFile) // pełna ścieżka do settings.json
 }
 
-// ------ LOAD SETTINGS ------
+// --------- WŁĄCZENIE USTAWIEŃ Z PLIKU ---------
+
 func LoadSettings() {
 	data, err := os.ReadFile(SettingsPath)
 	if err != nil {
@@ -55,7 +65,11 @@ func LoadSettings() {
 		return
 	}
 
-	json.Unmarshal(data, &AppSettings)
+	err = json.Unmarshal(data, &AppSettings)
+	if err != nil {
+		println("Error decoding settings JSON:", err.Error())
+		return
+	}
 
 	if AppSettings.Language == "pl" {
 		CurrentLang = PL
@@ -66,17 +80,20 @@ func LoadSettings() {
 	IsDark = AppSettings.DarkMode
 }
 
-// ------ SAVE SETTINGS ------
-func SaveSettings() {
-	AppSettings.Language = string(CurrentLang)
-	AppSettings.DarkMode = IsDark
+// --------- ZAPIS USTAWIEŃ DO PLIKU ---------
 
+func SaveSettings() {
+	AppSettings.Language = string(CurrentLang) // aktualny język
+	AppSettings.DarkMode = IsDark              // aktualny tryb ciemny
+
+	// Serializacja do JSON z wcięciami (czytelne dla człowieka)
 	data, err := json.MarshalIndent(AppSettings, "", "  ")
 	if err != nil {
 		println("JSON marshal error:", err.Error())
 		return
 	}
 
+	// Zapis do pliku JSON
 	err = os.WriteFile(SettingsPath, data, 0644)
 	if err != nil {
 		println("Write settings error:", err.Error())
@@ -86,11 +103,12 @@ func SaveSettings() {
 	println("Settings saved:", SettingsPath)
 }
 
-// ------ APPLY THEME ------
+// --------- ZASTOSOWANIE MOTYWU W APLIKACJI ---------
+
 func ApplyTheme(a fyne.App) {
 	if IsDark {
-		a.Settings().SetTheme(theme.DarkTheme())
+		a.Settings().SetTheme(theme.DarkTheme()) // tryb ciemny
 	} else {
-		a.Settings().SetTheme(theme.LightTheme())
+		a.Settings().SetTheme(theme.LightTheme()) // tryb jasny
 	}
 }

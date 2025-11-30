@@ -14,16 +14,22 @@ package main
 
 import "fyne.io/fyne/v2/app"
 
-var appname = "SunBitmap_Array_Tool v."
-var version = "0.0.01"
+// --------- STAŁE APLIKACJI ---------
+var appname = "SunBitmap_Array_Tool v." // nazwa aplikacji wyświetlana w GUI
+var version = "0.0.2"                   // wersja aplikacji
 
+// --------- FUNKCJA GŁÓWNA ---------
 func main() {
+	// Tworzymy nową aplikację Fyne z unikalnym identyfikatorem (ID) – przydatne np. do ustawień
 	a := app.NewWithID("com.lothar-TEAM.bitmaptool")
 
-	InitSettingsPath()
-	LoadSettings()
-	ApplyTheme(a)
+	// --------- INICJALIZACJA ---------
+	InitSettingsPath() // ustawienie ścieżki do pliku konfiguracyjnego
+	LoadSettings()     // wczytanie zapisanych ustawień użytkownika
+	ApplyTheme(a)      // zastosowanie motywu (ciemny/jasny) do aplikacji
 
-	StartGUI(a)
-	a.Run()
+	// --------- URUCHOMIENIE INTERFEJSU ---------
+	StartGUI(a) // stworzenie okna, layoutu i wszystkich elementów GUI
+
+	a.Run() // uruchomienie głównej pętli aplikacji
 }
